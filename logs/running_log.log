@@ -1,0 +1,36 @@
+[ 2025-11-21 12:20:26,117 ] 1025 httpx - INFO - HTTP Request: GET http://127.0.0.1:7861/gradio_api/startup-events "HTTP/1.1 200 OK"
+[ 2025-11-21 12:20:26,182 ] 1025 httpx - INFO - HTTP Request: HEAD http://127.0.0.1:7861/ "HTTP/1.1 200 OK"
+[ 2025-11-21 12:20:26,430 ] 1025 httpx - INFO - HTTP Request: GET https://api.gradio.app/pkg-version "HTTP/1.1 200 OK"
+[ 2025-11-21 12:21:01,770 ] 32 root - INFO - <<< Starting AgroLens Pipeline >>>
+[ 2025-11-21 12:21:01,771 ] 36 root - INFO - <<< Loading YAML configuration for CV inference >>>
+[ 2025-11-21 12:21:01,779 ] 134 root - INFO - Loaded config from configuration-files\cv_inference_config.yaml
+[ 2025-11-21 12:21:01,779 ] 43 root - INFO - <<< Stage 1: Starting inference on image >>>
+[ 2025-11-21 12:21:01,780 ] 33 root - INFO - Using device: cpu
+[ 2025-11-21 12:21:01,780 ] 36 root - INFO - Loading model and processor from: cv-model
+[ 2025-11-21 12:21:04,037 ] 40 root - INFO - Model and processor loaded successfully.
+[ 2025-11-21 12:21:04,044 ] 49 root - INFO - Using label mappings from model config.
+[ 2025-11-21 12:21:05,070 ] 98 root - INFO - Prediction successful. Predicted label: blight
+[ 2025-11-21 12:21:05,087 ] 193 root - INFO - Prediction saved to pipeline-files\prediction.json
+[ 2025-11-21 12:21:05,087 ] 195 root - INFO - Predicted: blight
+[ 2025-11-21 12:21:05,105 ] 48 root - INFO - <<< Stage 1 Complete: Predicted label = 'blight' | Time taken: 3.33s >>>
+[ 2025-11-21 12:21:05,106 ] 54 root - INFO - <<< Stage 2: Running RAG Chatbot >>>
+[ 2025-11-21 12:21:05,126 ] 100 root - INFO - Loaded config from configuration-files\rag_config.yaml
+[ 2025-11-21 12:21:05,131 ] 33 root - INFO - Environment variables loaded.
+[ 2025-11-21 12:21:06,684 ] 54 root - INFO - Loaded embedding model: text-embedding-3-small
+[ 2025-11-21 12:21:07,336 ] 59 chromadb.telemetry.product.posthog - ERROR - Failed to send telemetry event ClientStartEvent: capture() takes 1 positional argument but 3 were given
+[ 2025-11-21 12:21:07,344 ] 59 chromadb.telemetry.product.posthog - ERROR - Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+[ 2025-11-21 12:21:07,345 ] 62 root - INFO - Loaded existing vectorstore from: pipeline-files\vector-db
+[ 2025-11-21 12:21:07,419 ] 70 root - INFO - Chat model initialized: gpt-4o-mini
+[ 2025-11-21 12:21:07,420 ] 76 root - INFO - Conversation memory created.
+[ 2025-11-21 12:21:07,421 ] 82 root - INFO - Custom prompt template loaded.
+[ 2025-11-21 12:21:07,422 ] 93 root - INFO - Conversational retrieval chain created successfully.
+[ 2025-11-21 12:21:07,445 ] 118 root - INFO - Loaded predicted label from pipeline-files\prediction.json: blight
+[ 2025-11-21 12:21:07,446 ] 123 root - INFO - Passing in the predicted condition << blight >> into our LLM for insights
+[ 2025-11-21 12:21:08,496 ] 1025 httpx - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+[ 2025-11-21 12:21:08,510 ] 59 chromadb.telemetry.product.posthog - ERROR - Failed to send telemetry event CollectionQueryEvent: capture() takes 1 positional argument but 3 were given
+[ 2025-11-21 12:21:14,394 ] 1025 httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[ 2025-11-21 12:21:14,418 ] 157 root - INFO - Latest RAG response saved to: pipeline-files\last_rag_response.txt
+[ 2025-11-21 12:21:14,419 ] 164 root - INFO - RAG chat completed successfully.
+[ 2025-11-21 12:21:14,421 ] 172 root - INFO - Conversation saved to: pipeline-files\last_conversation_for_langchain.txt
+[ 2025-11-21 12:21:14,422 ] 59 root - INFO - <<< Stage 2 Complete | Time taken: 9.32s >>>
+[ 2025-11-21 12:21:14,422 ] 62 root - INFO - <<< Pipeline Complete | Total runtime: 12.65s >>>

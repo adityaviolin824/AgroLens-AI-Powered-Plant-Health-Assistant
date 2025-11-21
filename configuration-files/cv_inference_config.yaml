@@ -1,0 +1,16 @@
+project_name: "AgroLens Predictor"
+log_level: "INFO"
+
+model:
+  model_path: "cv-model/"            
+  device: "cpu"                      
+  class_names_path: null             
+
+output:
+  save_dir: "pipeline-files"    
+  file_name: "prediction.json"       
+  save_enabled: true                   
+
+image:
+  input_path: null
+  supported_formats: [".jpg", ".jpeg", ".png", ".webp", ".bmp", ".tif", ".tiff", ".jfif"] 

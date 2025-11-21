@@ -1,0 +1,18 @@
+=== Conversation History ===
+HUMAN: The disease detected is blight. Start by stating this clearly. In one short line, explain what it means for the crop. List 4–6 concrete steps: remove or isolate affected parts, how to treat, how to prevent spread, and what to monitor next. Offer a low-cost option if possible. Keep the tone calm, supportive, and farmer-friendly.
+AI: The disease detected is blight. This means the crop is facing potential damage, which can reduce yields.
+
+Here are some steps you can take now:
+
+1. Remove any affected leaves or plant parts carefully to prevent further spread.
+2. Treat the remaining healthy parts with a copper-based fungicide as soon as you notice early signs.
+3. Avoid overhead watering to keep the leaves dry and reduce humidity around the plants.
+4. Ensure good air circulation by spacing your plants properly and pruning where necessary.
+5. Clean your tools and equipment after working on affected plants to avoid spreading the disease.
+
+For prevention, keep an eye on your plants for any early signs of blight so you can act quickly. 
+
+As a low-cost option, you can use homemade fungicides made from baking soda and water as a preventive measure. 
+
+If you're unsure or need more specific advice, please reach out to your local agronomist.
+

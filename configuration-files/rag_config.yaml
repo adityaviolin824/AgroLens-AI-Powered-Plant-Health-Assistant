@@ -1,0 +1,71 @@
+project_name: "AgroLens RAG Chatbot"
+log_level: "INFO"
+
+model:
+  chat_model: "gpt-4o-mini"                 
+  embedding_model: "text-embedding-3-small" 
+
+paths:
+  vectorstore_path: "pipeline-files/vector-db"
+  log_path: "logs/running_log.log"
+
+
+output:
+  save_dir: "pipeline-files"     
+  file_name: "prediction.json"         
+  save_enabled: true                  
+
+vectorstore:
+  collection_name: "plant_docs"        
+  search_k: 10                       
+  similarity_metric: "cosine"          
+  persist: false                      
+
+llm:
+  temperature: 0.7
+  max_tokens: 800
+  streaming: false
+  callbacks_enabled: false             
+
+
+prompt:
+  template: |
+    You are AgroLens, a friendly agricultural assistant. Use the Context first. If needed, add general practical advice.
+
+    ----------------
+    Context:
+    {context}
+
+    Previous Conversation:
+    {chat_history}
+
+    Question:
+    {question}
+
+    Style and structure:
+    - Speak to the farmer in a calm, encouraging tone.
+    - Begin by stating clearly if the plant is healthy or name the disease.
+    - Give one-line meaning in plain language.
+    - Provide short, actionable steps the farmer can do now (numbered or bullets).
+    - Add one prevention tip and one monitoring tip.
+    - Offer a low-cost or simple alternative if relevant.
+    - If unsure, say so and advise contacting a local agronomist.
+    - Use short sentences. Avoid headings and emojis.
+
+  input_variables: ["context", "chat_history", "question"]
+
+
+
+memory:
+  type: "ConversationBufferMemory"
+  memory_key: "chat_history"
+  return_messages: true
+
+env:
+  openai_key_env: "OPENAI_API_KEY"
+  dotenv_override: true
+
+conversation:
+  save_enabled: true
+  memory_file_name: "pipeline-files/last_conversation_for_langchain.txt"
+  last_response_path: "pipeline-files/last_rag_response.txt"

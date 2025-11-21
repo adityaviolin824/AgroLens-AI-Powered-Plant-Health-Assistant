@@ -1,0 +1,23 @@
+project_name: "AgroLens Vectorizer"
+log_level: "INFO"
+
+model:
+  llm_name: "gpt-4o-mini"           
+  embedding_model: "text-embedding-3-small"
+
+paths:
+  txt_folder: "DATA/Processed-Data" 
+  vectorstore_path: "pipeline-files/vector-db"          
+  log_path: "logs/running_log.log"         
+
+vectorstore:
+  collection_name: "plant_docs"           
+
+text:
+  glob_pattern: "**/*.txt"          
+  chunk_size: 1000
+  chunk_overlap: 200
+
+env:
+  openai_key_env: "OPENAI_API_KEY"      
+  dotenv_override: true      
